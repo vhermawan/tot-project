@@ -1,0 +1,20 @@
+{
+  "links": [
+    {
+      "link": "/",
+      "label": "Home"
+    },
+    {
+      "link": "/example",
+      "label": "Example"
+    },
+    {
+      "link": "/learn",
+      "label": "Learn"
+    },
+    {
+      "link": "/community",
+      "label": "Community"
+    }
+  ]
+}
