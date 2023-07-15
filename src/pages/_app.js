@@ -6,9 +6,20 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 
+const QueryClients = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+      cacheTime: 60 * 1000, // 60seconds
+      staleTime: 0 * 10 * 1000 // 0seconds
+    }
+  }
+});
+
+
 export default function App(props) {
   const { Component, pageProps } = props;
-  const queryClient = new QueryClient()
 
   return (
     <>
@@ -25,7 +36,7 @@ export default function App(props) {
           colorScheme: 'light',
         }}
       >
-        <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={QueryClients}>
           <Hydrate state={pageProps.dehydratedState}>
             <Component {...pageProps} />
           </Hydrate>
