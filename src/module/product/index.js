@@ -7,6 +7,7 @@ import { DataTable } from "mantine-datatable";
 import { useState } from "react";
 import AddDataForm from "./components/form/addDataForm";
 import EditDataForm from "./components/form/editDataform";
+import { notifications } from '@mantine/notifications';
 
 export default function ProductPage(){
   const [page, setPage] = useState(1);
@@ -31,7 +32,18 @@ export default function ProductPage(){
       if(response.status === 200) {
         setIsOpenDelete(false);
         refetch();
+        notifications.show({
+          title: 'Success',
+          message: 'Success deleted data!',
+        })
       }
+    },
+    onError: () => {
+      notifications.show({
+        title: 'Failed',
+        message: 'Failed deleted data!',
+        color: 'red'
+      })
     }
   });
 

@@ -4,7 +4,8 @@ import {
   Hydrate,
   QueryClient,
   QueryClientProvider,
-} from '@tanstack/react-query'
+} from '@tanstack/react-query';
+import { Notifications } from '@mantine/notifications';
 
 const QueryClients = new QueryClient({
   defaultOptions: {
@@ -35,7 +36,8 @@ export default function App(props) {
           /** Put your mantine theme override here */
           colorScheme: 'light',
         }}
-      >
+      > 
+        <Notifications />
         <QueryClientProvider client={QueryClients}>
           <Hydrate state={pageProps.dehydratedState}>
             <Component {...pageProps} />
